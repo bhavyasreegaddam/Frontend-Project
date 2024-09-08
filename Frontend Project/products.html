@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Head Section (Top Bar) */
+    .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 50px;
+        background-color: #f8f8f8;
+        font-size: 14px;
+        color: #555;
+    }
+    .head-left, .head-right {
+        display: flex;
+        align-items: center;
+    }
+    .head-left span, .head-left label, .head-left p {
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .head-left span.material-icons {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+    .head-right p {
+        margin-left: 15px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    .head-right p:hover {
+        color: #e94560;
+    }
+
+    /* Main Navbar */
+    #navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: white;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
+    .logo h2 {
+        font-size: 30px;
+        font-weight: 600;
+        color: #e94560;
+    }
+
+    /* Search Bar */
+    .search-bar {
+        display: flex;
+        align-items: center;
+        width: 50%;
+    }
+    .search-bar input {
+        width: 100%;
+        padding: 12px 20px;
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+    .search-bar input:focus {
+        border-color: #e94560;
+    }
+    .search-bar button {
+        margin-left: -50px;
+        padding: 12px 18px;
+        background-color: #e94560;
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s;
+    }
+    .search-bar button:hover {
+        background-color: #d7374d;
+    }
+    .search-bar button .material-icons {
+        margin-left: 5px;
+    }
+
+    /* Right icons */
+    .logos span {
+        font-size: 28px;
+        margin-left: 20px;
+        color: #555;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    .logos span:hover {
+        color: #e94560;
+    }
+
+    /* Category Bar */
+    .category {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px 50px;
+        background-color: #f8f8f8;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .category span.material-icons {
+        font-size: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .category nav a {
+        margin-left: 30px;
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s;
+    }
+    .category nav a:hover {
+        color: #e94560;
+    }
+ /* Product Section */
+ .product-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-around;
+        margin-top: 100px;
+    }
+
+    /* Product Card Styling */
+    .product-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        overflow: hidden;
+        position: relative;
+    }
+    .product-card:hover {
+        transform: translateY(-10px);
+    }
+
+    /* Product Image */
+    .product-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    /* Product Info */
+    .product-info {
+        padding: 20px;
+    }
+
+    .product-info h3 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .product-info p {
+        font-size: 16px;
+        font-weight: 600;
+        color: #e94560;
+        margin-bottom: 20px;
+    }
+
+    /* Add to Cart Button */
+    .add-to-cart {
+        background-color: #e94560;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.3s ease;
+        opacity: 0;
+    }
+
+    .product-card:hover .add-to-cart {
+        bottom: 20px;
+        opacity: 1;
+    }
+</style>
+<body>
+    <!-- Top Bar -->
+    <div class='head'>
+        <div class="head-left">
+            <span class="material-icons">call</span>
+            <label>+91 1023464797</label>
+            <span class="material-icons" id="mail">mail</span>
+            <p>example@gmail.com</p>
+        </div>
+        <div class="head-right">
+            <p>Theme FAQ's</p>
+            <p>Need Help</p>
+            <p>EN</p>
+            <p>USD</p>
+        </div>
+    </div>
+    
+    <!-- Main Navbar -->
+    <div id='navbar'>
+        <div class='logo'>
+            <h2>Fashion</h2>
+        </div>
+        <div class='search-bar'>
+            <input type='text' placeholder='Search and hit enter...'/>
+            <button>Search <span class="material-icons">search</span></button>
+        </div>
+        <div class='logos'>
+            <span class="material-icons">account_circle</span> 
+            <span class="material-icons">shopping_bag</span>
+        </div>
+    </div>
+
+    <!-- Category Bar -->
+    <div class='category'>
+        <span class="material-icons">category</span>
+        <span>Categories</span>
+        <span class="material-icons">arrow_drop_down</span>
+        <!-- Navbar anchor tags -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="./products.html">Products</a>
+            <a href="./user.html">User Account</a>
+            <a href="#">Vendor Account</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <!-- products section  -->
+    <div class="product-section">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://iplanet.one/cdn/shop/files/iPhone_15_Pro_Blue_Titanium_PDP_Image_Position-1__en-IN.jpg?v=1695434973" alt="Product 1">
+            <div class="product-info">
+                <h3>Iphone</h3>
+                <p>1000.00</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://www.tvdeal.in/image/cache/catalog/OnePlus/OnePlus-TV-43Y1-800x800.jpg" alt="Product 2">
+            <div class="product-info">
+            <h3>Samsung Tv</h3>
+                <p>340.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://image01.realme.net/general/20240329/1711739251198c52d1212d29549789c50c177a13dfdad.png.webp?width=1440&height=1440&size=356270" alt="Product 3">
+            <div class="product-info">
+                <h3>Realme 12x</h3>
+                <p>1900.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697623007/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/258707_tct7td.png?tr=w-600" alt="Product 4">
+            <div class="product-info">
+                <h3>Product Title 4</h3>
+                <p>909.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+    <!-- another -->
+     <!-- products section  -->
+    <div class="product-section">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://suprememobiles.in/cdn/shop/products/Samsung-Watch-5-LTE-Now-Available.jpg?v=1702107237" alt="Product 1">
+            <div class="product-info">
+                <h3>Firebolt Smart Watch</h3>
+                <p>1000.00</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://www.fireboltt.com/cdn/shop/files/Oracle_PNG.1160.png?v=1721466512" alt="Product 2">
+            <div class="product-info">
+            <h3>Noise Watch</h3>
+                <p>340.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/keyboard/desktop-keyboard/w/l/6/gaming-keyboard-with-87-keys-rgb-backlit-with-suspension-keys-original-imagzcgwtrabgjna.jpeg?q=90&crop=false" alt="Product 3">
+            <div class="product-info">
+                <h3>Keyboard</h3>
+                <p>1900.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://m.media-amazon.com/images/I/71SvqTFPXJL.jpg" alt="Product 4">
+            <div class="product-info">
+                <h3>Tablet</h3>
+                <p>909.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+    <!-- products section  -->
+    <div class="product-section">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://cdn.thewirecutter.com/wp-content/media/2023/06/bestlaptops-2048px-9765.jpg?auto=webp&quality=75&width=1024" alt="Product 1">
+            <div class="product-info">
+                <h3>Laptop</h3>
+                <p>1000.00</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 2">
+            <div class="product-info">
+            <h3>Macbook</h3>
+                <p>340.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://m.media-amazon.com/images/I/61EbsHc9LML._AC_UF1000,1000_QL80_.jpg" alt="Product 3">
+            <div class="product-info">
+                <h3>Charger</h3>
+                <p>1900.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://oxygendigitalshop.com/media/cache/2500x0/catalog/product/i/r/iron_box_havells_new_1655467547.webp" alt="Product 4">
+            <div class="product-info">
+                <h3>Iron Box</h3>
+                <p>909.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+    <!-- products section  -->
+    <div class="product-section">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://luxor.in/media/catalog/product/cache/1d33a401d7d4f49c41930c20a2e836a7/9/0/9000013839_000.png" alt="Product 1">
+            <div class="product-info">
+                <h3>Parker Pens</h3>
+                <p>1000.00</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://www.jaipurcraftonline.com/cdn/shop/products/61XqFpAKFRL.jpg?v=1721727987" alt="Product 2">
+            <div class="product-info">
+            <h3>Clock</h3>
+                <p>340.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://thumbs.dreamstime.com/b/men-s-fashion-shoes-black-classic-design-pair-manly-boots-d-rendering-isolated-white-background-115596423.jpg" alt="Product 3">
+            <div class="product-info">
+                <h3>Leather Shoes</h3>
+                <p>1900.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://shop.lakmesalon.in/cdn/shop/files/29663_H-8901030974021-Copy.jpg?v=1699355838" alt="Product 4">
+            <div class="product-info">
+                <h3>Lipstick</h3>
+                <p>909.99</p>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+</body>
+</html>

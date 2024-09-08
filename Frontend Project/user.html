@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Head Section (Top Bar) */
+    .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 50px;
+        background-color: #f8f8f8;
+        font-size: 14px;
+        color: #555;
+    }
+    .head-left, .head-right {
+        display: flex;
+        align-items: center;
+    }
+    .head-left span, .head-left label, .head-left p {
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .head-left span.material-icons {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+    .head-right p {
+        margin-left: 15px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    .head-right p:hover {
+        color: #e94560;
+    }
+
+    /* Main Navbar */
+    #navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: white;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
+    .logo h2 {
+        font-size: 30px;
+        font-weight: 600;
+        color: #e94560;
+    }
+
+    /* Search Bar */
+    .search-bar {
+        display: flex;
+        align-items: center;
+        width: 50%;
+    }
+    .search-bar input {
+        width: 100%;
+        padding: 12px 20px;
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+    .search-bar input:focus {
+        border-color: #e94560;
+    }
+    .search-bar button {
+        margin-left: -50px;
+        padding: 12px 18px;
+        background-color: #e94560;
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s;
+    }
+    .search-bar button:hover {
+        background-color: #d7374d;
+    }
+    .search-bar button .material-icons {
+        margin-left: 5px;
+    }
+
+    /* Right icons */
+    .logos span {
+        font-size: 28px;
+        margin-left: 20px;
+        color: #555;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    .logos span:hover {
+        color: #e94560;
+    }
+
+    /* Category Bar */
+    .category {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px 50px;
+        background-color: #f8f8f8;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .category span.material-icons {
+        font-size: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .category nav a {
+        margin-left: 30px;
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s;
+    }
+    .category nav a:hover {
+        color: #e94560;
+    }
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        /* Centering the account container */
+        .account-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        /* Profile box styling */
+        .user-info-box {
+            width: 350px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* User Icon Container */
+        .user-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #e94560;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* User Icon Image Styling */
+        .user-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Form Group Styling */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Submit Button Styling */
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #e94560;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #d0364f;
+        }
+
+        /* Success Message Styling */
+        .success-message {
+            margin-top: 20px;
+            color: green;
+            font-size: 16px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* User Details Display Styling */
+        .user-details {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+ <!-- Top Bar -->
+ <div class='head'>
+    <div class="head-left">
+        <span class="material-icons">call</span>
+        <label>+91 1023464797</label>
+        <span class="material-icons" id="mail">mail</span>
+        <p>example@gmail.com</p>
+    </div>
+    <div class="head-right">
+        <p>Theme FAQ's</p>
+        <p>Need Help</p>
+        <p>EN</p>
+        <p>USD</p>
+    </div>
+</div>
+
+<!-- Main Navbar -->
+<div id='navbar'>
+    <div class='logo'>
+        <h2>Fashion</h2>
+    </div>
+    <div class='search-bar'>
+        <input type='text' placeholder='Search and hit enter...'/>
+        <button>Search <span class="material-icons">search</span></button>
+    </div>
+    <div class='logos'>
+        <span class="material-icons">account_circle</span> 
+        <span class="material-icons">shopping_bag</span>
+    </div>
+</div>
+
+<!-- Category Bar -->
+<div class='category'>
+    <span class="material-icons">category</span>
+    <span>Categories</span>
+    <span class="material-icons">arrow_drop_down</span>
+    <!-- Navbar anchor tags -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="./products.html">Products</a>
+        <a href="./user.html">User Account</a>
+        <a href="#">Vendor Account</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Contact</a>
+    </nav>
+</div>
+    <!-- User Account Section -->
+    <div class="account-container">
+        <div class="user-info-box">
+            <!-- User Icon -->
+            <div class="user-icon">
+                <img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt="User Icon">
+            </div>
+
+            <!-- User Account Form -->
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Enter your last name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="submit-btn">Create Profile</button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fa fa-check-circle" style="color: green;"></i> Profile created successfully!
+            </div>
+
+            <!-- User Details Display -->
+            <div class="user-details" id="userDetails"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript to Handle Form Submission and Show Success Message -->
+    <script>
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            
+            // Display the success message
+            document.getElementById("successMessage").style.display = "block";
+            
+            // Display user details
+            document.getElementById("userDetails").innerHTML = `
+                <h3>Profile Details:</h3>
+                <p><strong>First Name:</strong> ${firstName}</p>
+                <p><strong>Last Name:</strong> ${lastName}</p>
+                <p><strong>Email:</strong> ${email}</p>
+            `;
+            
+            // Clear form after success (optional)
+            setTimeout(function() {
+                document.getElementById("userForm").reset();
+                document.getElementById("successMessage").style.display = "none"; // Hide message after resetting
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>
